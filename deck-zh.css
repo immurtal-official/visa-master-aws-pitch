@@ -1,0 +1,110 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   deck-zh.css — CJK typography layer, loaded AFTER deck.css.
+
+   Colour, layout and component structure stay in deck.css; this file only
+   changes what has to change when the copy is Chinese:
+
+   1. Font stack — Archivo stays first so Latin and all figures ($29, 5521万,
+      645,977) keep the deck's numerals and tabular alignment; Hanzi falls
+      through to the system CJK face.
+   2. Line height — dense Hanzi needs far more vertical room than Latin.
+      Reading sizes go to ~1.75; display sizes to ~1.5.
+   3. Letter-spacing — the negative display tracking and the wide uppercase
+      tracking are both wrong for Hanzi: tracking inserts space between every
+      character, and negative tracking collides the strokes. Both reset.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+deck-stage {
+  font-family: "Archivo", -apple-system, "SF Pro Text", "PingFang SC",
+               "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+
+/* ── display type: kill the negative tracking, loosen the leading ────────── */
+.title,
+.div-title,
+.closing-mark,
+.pillar-name,
+.card-name,
+.step-name,
+.phase-name,
+.founder-name,
+.principle-name,
+.stream-name,
+.channel-name,
+.bar-key,
+.cell-strong,
+.quote-text {
+  letter-spacing: 0;
+}
+
+.title { line-height: 1.2; }
+.div-title { line-height: 1.25; }
+.quote-text { line-height: 1.5; }
+.lead { line-height: 1.55; }
+.closer { line-height: 1.55; }
+.pillar-name { line-height: 1.3; }
+.card-name { line-height: 1.35; }
+.step-name { line-height: 1.35; }
+.phase-name { line-height: 1.35; }
+
+/* The cover and stat numerals stay Latin — leave their tracking alone, but a
+   Chinese stat line ("大量时间") must not run at -0.03em. */
+.pane-stat { letter-spacing: 0; line-height: 1.15; }
+
+/* ── reading type: Hanzi needs the extra leading ─────────────────────────── */
+.subtitle,
+.div-sub,
+.note,
+.pane-body,
+.pillar-body,
+.card-body,
+.step-body,
+.principle-body,
+.callout-sub,
+.phase-body,
+.founder-body,
+.channel-body,
+.source-text,
+.ms-what,
+.ms-exit,
+.quote-fact-label,
+.stat-label,
+.money-sub,
+.stream-when,
+.phase-gate,
+.prior,
+.cash-name,
+.bar-desc { line-height: 1.75; }
+
+.callout-text { line-height: 1.45; }
+.tbl td { line-height: 1.7; }
+.tbl--tight td { line-height: 1.6; }
+
+/* ── uppercase labels: tracking that suits Latin is far too airy on Hanzi ── */
+.eyebrow,
+.pane-kicker,
+.phase-when,
+.ms-head,
+.money-when,
+.founder-role,
+.tbl th { letter-spacing: .06em; }
+
+/* The footer keeps the Latin wordmark, so its original tracking still reads. */
+
+/* ── density corrections forced by the taller CJK leading ────────────────── */
+
+/* The problem panes carry a big stat plus a three-line body. At 1.75 leading
+   that stack overflows the pane and collides with the closing line, so the
+   pane tightens rather than the type shrinking. */
+.pane { padding: 44px 44px 40px; }
+.pane-stat { line-height: 1.05; }
+.pane-body { line-height: 1.6; padding-top: 28px; }
+
+/* "SAM 7380万美元" is wider than the 210px Latin key column and wrapped. */
+.bar-row { grid-template-columns: 268px 1fr; }
+
+/* Six-row risk table: nearly every Chinese cell wraps to two lines, so 1.6
+   leading overflows the stage. 1.55 with tighter padding still reads cleanly
+   at 24px and keeps all six rows clear of the footer. */
+.tbl--tight td { line-height: 1.55; padding: 12px 22px; }
+.tbl--tight th { padding: 14px 22px; }
