@@ -1,6 +1,6 @@
 # Visa Master - AWS From Idea to Frontier
 
-Visa Master is a privacy-first AI workspace that helps travelers prepare their own visa applications. It turns verified visa requirements into a guided, local workflow that applicants can execute without choosing between an expensive agency and a fragmented, time-consuming DIY process.
+Travelers should not have to choose between an expensive, privacy-sensitive agency and a fragmented, time-consuming DIY process. Visa Master turns verified visa application information into a guided local workspace that applicants can execute.
 
 ## Pitch deck
 
